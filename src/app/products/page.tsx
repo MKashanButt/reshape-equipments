@@ -181,7 +181,7 @@ export default function Products() {
           <h1>Empowering Lives with Trusted Care Solutions</h1>
           <p>
             Discover a wide range of products designed to support your health,
-            comfort, and independence. At Squad Medical Supplies, we carefully
+            comfort, and independence. At Reshape Equipments, we carefully
             select premium DME products tailored to meet your unique needs. From
             mobility aids to advanced monitoring devices, every item reflects
             our commitment to enhancing your quality of life with care you can
