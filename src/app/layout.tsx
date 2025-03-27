@@ -17,7 +17,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Squad Medical Supplies",
+  title: "Reshape Equipments",
   description: "Your Go To Medical Supplier",
 };
 

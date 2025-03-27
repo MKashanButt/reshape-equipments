@@ -1,161 +1,161 @@
 .contact {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 10px 10px;
-    align-items: center;
-    background-color: var(--yellow);
-    color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 10px 10px;
+  align-items: center;
+  background-color: var(--yellow);
+  color: white;
 }
 
 .socials {
-    width: 60%;
-    display: flex;
-    gap: 5px;
+  width: 60%;
+  display: flex;
+  gap: 5px;
 }
 
 .socials .icon {
-    width: 20px;
-    fill: white;
+  width: 20px;
+  fill: white;
 }
 
-.contact>p {
-    color: white;
-    justify-self: end;
+.contact > p {
+  color: white;
+  justify-self: end;
 }
 
 .header {
-    width: 100%;
-    height: 120px;
-    padding: 0 10px;
-    display: flex;
-    align-items: center;
-    top: 0;
-    z-index: 100;
-    position: sticky;
-    background-color: white;
-    z-index: 1000;
+  width: 100%;
+  height: 120px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  top: 0;
+  z-index: 100;
+  position: sticky;
+  background-color: white;
+  z-index: 1000;
 }
 
 .header .logo {
-    width: 200px;
-    height: 30%;
+  width: 360px;
+  height: 30%;
 }
 
 .header nav {
-    width: 90%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
-.header nav>ul {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    margin-right: 20px;
+.header nav > ul {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-right: 20px;
 }
 
-.header nav>ul>li {
-    padding: 10px;
-    font-size: 14px;
-    position: relative;
+.header nav > ul > li {
+  padding: 10px;
+  font-size: 14px;
+  position: relative;
 }
 
-.header nav>ul>li span {
-    user-select: none;
-    cursor: pointer;
+.header nav > ul > li span {
+  user-select: none;
+  cursor: pointer;
 }
 
 .header .headerBtn {
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid var(--blue);
-    background-color: var(--blue);
-    cursor: pointer;
-    color: white;
-    transition: all 0.2s ease;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--blue);
+  background-color: var(--blue);
+  cursor: pointer;
+  color: white;
+  transition: all 0.2s ease;
 }
 
 .header .headerBtn:hover {
-    background-color: var(--yellow);
-    border: 2px solid var(--yellow);
-    color: white;
+  background-color: var(--yellow);
+  border: 2px solid var(--yellow);
+  color: white;
 }
 
 .dropdown {
-    position: absolute;
-    display: flex;
-    margin-top: 10px;
+  position: absolute;
+  display: flex;
+  margin-top: 10px;
 }
 
 .dropdown ul {
-    width: 140px;
-    display: flex;
-    flex-direction: column;
-    z-index: 100;
-    background-color: white;
-    border: 1px solid;
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  background-color: white;
+  border: 1px solid;
 }
 
 .dropdown ul li {
-    padding: 10px;
-    border-bottom: 1px solid grey;
+  padding: 10px;
+  border-bottom: 1px solid grey;
 }
 
 .dropdown .lastItem {
-    border-bottom: 0;
+  border-bottom: 0;
 }
 
 @media (max-width: 640px) {
-    .contact {
-        grid-template-columns: 1fr;
-        text-align: center;
-        padding: 20px 10px;
-    }
+  .contact {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 20px 10px;
+  }
 
-    .contact>p {
-        justify-self: center;
-        margin-top: 10px;
-    }
+  .contact > p {
+    justify-self: center;
+    margin-top: 10px;
+  }
 
-    .socials {
-        width: 100%;
-        justify-content: center;
-        gap: 10px;
-    }
+  .socials {
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+  }
 
-    .header {
-        flex-direction: column;
-        height: auto;
-        padding: 10px 0;
-    }
+  .header {
+    flex-direction: column;
+    height: auto;
+    padding: 10px 0;
+  }
 
-    .header .logo {
-        width: 30%;
-        height: auto;
-        margin-bottom: 10px;
-    }
+  .header .logo {
+    width: 30%;
+    height: auto;
+    margin-bottom: 10px;
+  }
 
-    .header nav {
-        width: 100%;
-        justify-content: center;
-        font-size: 10px;
-    }
+  .header nav {
+    width: 100%;
+    justify-content: center;
+    font-size: 10px;
+  }
 
-    .header nav ul {
-        gap: 10px;
-        margin-right: 0;
-        flex-wrap: wrap;
-    }
+  .header nav ul {
+    gap: 10px;
+    margin-right: 0;
+    flex-wrap: wrap;
+  }
 
-    .header nav ul li {
-        font-size: 10px;
-    }
+  .header nav ul li {
+    font-size: 10px;
+  }
 
-    .header .headerBtn {
-        padding: 8px 15px;
-        font-size: 10px;
-    }
+  .header .headerBtn {
+    padding: 8px 15px;
+    font-size: 10px;
+  }
 }
