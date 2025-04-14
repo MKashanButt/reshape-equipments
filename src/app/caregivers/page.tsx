@@ -6,7 +6,7 @@ import Reviews from "@/components/Reviews";
 import styles from "@/assets/css/Caregivers.module.css";
 
 import cta from "@/assets/images/caregivers-cta.jpg";
-import hero from "@/assets/images/caregivers-hero.png";
+import hero from "@/assets/images/caregivers-hero.jpg";
 import whyGetCaregiver from "@/assets/images/whyGetCaregiver.png";
 import whyChooseUs from "@/assets/images/whychooseus.png";
 import { toggleDialog } from "@/utils/DialogHelper";

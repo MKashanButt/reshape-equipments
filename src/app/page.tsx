@@ -4,20 +4,13 @@ import Image from "next/image";
 import { closeDialog, toggleDialog } from "@/utils/DialogHelper";
 import { counter } from "@/utils/CounterHelper";
 import ProductSlider from "@/components/ProductSlider";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { A11y, Autoplay, Navigation } from "swiper/modules";
 import styles from "@/assets/css/Home.module.css";
 import PopupForm from "@/components/PopupForm";
 
 import "swiper/css";
 import "swiper/css/navigation";
 
-import HeroSlideOne from "@/assets/images/hero-slider-one.png";
-import HeroSlideTwo from "@/assets/images/hero-slider-two.png";
-import HeroSlideThree from "@/assets/images/hero-slider-three.png";
-
 import KneeBraces from "@/assets/images/knee-braces.jpg";
-import LymphedemaPumpMassagers from "@/assets/images/lymphedema-pump-massagers.jpg";
 import CgmMonitors from "@/assets/images/cgm-monitors.jpg";
 import Wheelchairs from "@/assets/images/wheelchairs.jpg";
 import HipBraces from "@/assets/images/hip-braces.jpg";
@@ -78,8 +71,6 @@ export default function Home() {
       link: "#contactUs",
     },
   ];
-  const navigationNextRef = useRef(null);
-  const navigationPrevRef = useRef(null);
 
   useEffect(() => {
     const target = document.getElementById("stats");
@@ -108,63 +99,19 @@ export default function Home() {
   return (
     <main>
       <section className={styles.hero}>
-        <Swiper
-          className={styles.overlaySlider}
-          modules={[Navigation, A11y, Autoplay]}
-          slidesPerView={1}
-          autoplay
-          navigation={{
-            prevEl: navigationPrevRef.current,
-            nextEl: navigationNextRef.current,
-          }}
-          loop
-        >
-          <SwiperSlide className={`${styles.slide} ${styles.slideOne}`}>
-            <Link href="/about">
-              <Image src={HeroSlideOne} alt="" className={styles.image} />
-            </Link>
-          </SwiperSlide>
-          <SwiperSlide className={styles.slide}>
-            <Image src={HeroSlideTwo} alt="" className={styles.image} />
-          </SwiperSlide>
-          <SwiperSlide className={`${styles.slide} ${styles.slideLast}`}>
-            <Image src={HeroSlideThree} alt="" className={styles.image} />
-          </SwiperSlide>
-          <div className="customNavigation">
-            <button ref={navigationPrevRef}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="icon"
-                viewBox="0 0 512 512"
-              >
-                <path
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="10"
-                  d="M328 112L184 256l144 144"
-                />
-              </svg>
-            </button>
-            <button ref={navigationNextRef}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="icon"
-                viewBox="0 0 512 512"
-              >
-                <path
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="10"
-                  d="M184 112l144 144-144 144"
-                />
-              </svg>
-            </button>
-          </div>
-        </Swiper>
+        <div className={styles.overlay}></div>
+        <div className={styles.content}>
+          <h1>Precision Equipment. Trusted Care.</h1>
+          <p>
+            Reliable medical devices built to support healthcare professionals
+            and improve patient outcomes. From diagnostics to patient
+            monitoring, every product we offer is backed by rigorous quality
+            standards and trusted by leading institutions
+          </p>
+          <Link href="/about">
+            <button>About Us</button>
+          </Link>
+        </div>
       </section>
       <section className={`${styles.whatWeDo} container`}>
         <div className={styles.head}>
@@ -281,127 +228,111 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* <section className={`${styles.promotion} container`} id="topProducts">
-        <h2>Our Top 3 Helping Products</h2>
-        <div className={styles.stage}>
-          <div className={styles.item} id="dialogBraces">
-            <Image src={KneeBraces} alt="knee-braces" />
-            <div className={styles.overlay}></div>
-            <h3>Struggling with Joint Pain? Find Relief with Our Orthopedic Braces!</h3>
-            <button onClick={() => toggleDialog('braces')}>Get Your Product Now</button>
-          </div>
-          <div className={styles.item}>
-            <div className={styles.overlay}></div>
-            <Image src={CgmMonitors} alt="cgm-monitors" />
-            <h3>Fed Up with Finger Pricks? Discover Easy Glucose Monitoring!</h3>
-            <button onClick={() => toggleDialog('braces')}>Get Your Product Now</button>
-          </div>
-          <div className={styles.item}>
-            <div className={styles.overlay}></div>
-            <Image src={LymphedemaPumpMassagers} alt="lymphedema-pump-massagers" />
-            <h3>Battling Swollen Muscles? Try Our Lymphedema Pump Massagers!</h3>
-            <button onClick={() => toggleDialog('braces')}>Get Your Product Now</button>
-          </div>
-        </div>
-      </section> */}
-      <ProductSlider heading="Trending Products" data={data} />
       <section className={styles.stats}>
-        <span>At Reshape Equipments</span>
-        <h2>Our Stats</h2>
-        <hr />
-        <p>Speak for themselves</p>
-        <div className={`${styles.stage} container`} id="stats">
-          <div className={styles.item}>
-            <div className={styles.container}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className={styles.icon}
-                viewBox="0 0 512 512"
-              >
-                <path
-                  d="M376 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96z"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="32"
-                />
-                <path
-                  d="M288 304c-87 0-175.3 48-191.64 138.6-2 10.92 4.21 21.4 15.65 21.4H464c11.44 0 17.62-10.48 15.65-21.4C463.3 352 375 304 288 304z"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-miterlimit="10"
-                  stroke-width="32"
-                />
-                <path
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="32"
-                  d="M88 176v112M144 232H32"
-                />
-              </svg>
-              <h3 id="experienceNumber">0</h3>
-              <p>Years of EXPERIENCE Combined in the healthcare industry</p>
+        <ProductSlider
+          heading="Products"
+          data={data}
+          slidesperview={2}
+          width={868}
+        />
+        <div>
+          <span>At Reshape Equipments</span>
+          <h2>Our Product Stats</h2>
+          <hr />
+          <p>Speak for themselves</p>
+          <div className={`${styles.stage}`} id="stats">
+            <div className={styles.item}>
+              <div className={styles.container}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={styles.icon}
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    d="M376 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="32"
+                  />
+                  <path
+                    d="M288 304c-87 0-175.3 48-191.64 138.6-2 10.92 4.21 21.4 15.65 21.4H464c11.44 0 17.62-10.48 15.65-21.4C463.3 352 375 304 288 304z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-miterlimit="10"
+                    stroke-width="32"
+                  />
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="32"
+                    d="M88 176v112M144 232H32"
+                  />
+                </svg>
+                <h3 id="experienceNumber">3</h3>
+                <p>Years of EXPERIENCE Combined in the healthcare industry</p>
+              </div>
             </div>
-          </div>
-          <div className={styles.item}>
-            <div className={styles.container}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className={styles.icon}
-                viewBox="0 0 512 512"
-              >
-                <rect
-                  x="32"
-                  y="112"
-                  width="448"
-                  height="352"
-                  rx="48"
-                  ry="48"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linejoin="round"
-                  stroke-width="32"
-                />
-                <path
-                  d="M144 112V80a32 32 0 0132-32h160a32 32 0 0132 32v32M256 208v160M336 288H176"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="32"
-                />
-              </svg>
-              <h3 id="patientNumber">0</h3>
-              <p>
-                Patients SATISFIED with our family service and caring for over
-                10 years
-              </p>
+            <div className={styles.item}>
+              <div className={styles.container}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={styles.icon}
+                  viewBox="0 0 512 512"
+                >
+                  <rect
+                    x="32"
+                    y="112"
+                    width="448"
+                    height="352"
+                    rx="48"
+                    ry="48"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linejoin="round"
+                    stroke-width="32"
+                  />
+                  <path
+                    d="M144 112V80a32 32 0 0132-32h160a32 32 0 0132 32v32M256 208v160M336 288H176"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="32"
+                  />
+                </svg>
+                <h3 id="patientNumber">0</h3>
+                <p>
+                  Patients SATISFIED with our family service and caring for over
+                  10 years
+                </p>
+              </div>
             </div>
-          </div>
-          <div className={styles.item}>
-            <div className={styles.container}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className={styles.icon}
-                viewBox="0 0 512 512"
-              >
-                <path
-                  d="M313.27 124.64L198.73 51.36a32 32 0 00-29.28.35L56.51 127.49A16 16 0 0048 141.63v295.8a16 16 0 0023.49 14.14l97.82-63.79a32 32 0 0129.5-.24l111.86 73a32 32 0 0029.27-.11l115.43-75.94a16 16 0 008.63-14.2V74.57a16 16 0 00-23.49-14.14l-98 63.86a32 32 0 01-29.24.35zM328 128v336M184 48v336"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="32"
-                />
-              </svg>
-              <h3 id="statesNumber">0</h3>
-              <p>
-                STATES Business presence: Florida, North & South Carolina,
-                Texas, New Jersey
-              </p>
+            <div className={styles.item}>
+              <div className={styles.container}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={styles.icon}
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    d="M313.27 124.64L198.73 51.36a32 32 0 00-29.28.35L56.51 127.49A16 16 0 0048 141.63v295.8a16 16 0 0023.49 14.14l97.82-63.79a32 32 0 0129.5-.24l111.86 73a32 32 0 0029.27-.11l115.43-75.94a16 16 0 008.63-14.2V74.57a16 16 0 00-23.49-14.14l-98 63.86a32 32 0 01-29.24.35zM328 128v336M184 48v336"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="32"
+                  />
+                </svg>
+                <h3 id="statesNumber">0</h3>
+                <p>
+                  STATES Business presence: Florida, North & South Carolina,
+                  Texas, New Jersey
+                </p>
+              </div>
             </div>
           </div>
         </div>
