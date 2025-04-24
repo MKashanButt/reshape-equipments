@@ -39,7 +39,10 @@ export default function ProductSlider({
   width,
 }: SliderProps) {
   return (
-    <section className={styles.products} style={{ width: width }}>
+    <section
+      className={styles.products}
+      style={{ width: window.innerWidth <= 640 ? "100%" : width }}
+    >
       <h2>{heading}</h2>
       <Swiper
         className={styles.stage}
@@ -49,7 +52,7 @@ export default function ProductSlider({
             slidesPerView: 1,
           },
           768: {
-            slidesPerView: slidesperview || 2,
+            slidesPerView: 2,
             spaceBetween: 40,
           },
           1024: {

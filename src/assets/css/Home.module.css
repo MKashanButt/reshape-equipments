@@ -370,38 +370,26 @@
 
 @media (max-width: 640px) {
   .hero {
-    height: 30vh;
-    align-items: center;
-    padding-top: 20px;
+    height: 70vh;
   }
 
-  .hero .overlaySlider .slide {
-    flex-direction: column;
-    padding: 0 20px;
-    justify-content: center;
-  }
-
-  .hero .overlaySlider .slide .content {
+  .hero .content {
     width: 90%;
-    text-align: center;
-    gap: 15px;
-    justify-content: center;
-    align-items: center;
+    padding: 15px;
   }
 
-  .hero .overlaySlider .slide .content h1 {
-    font-size: 30px;
-    padding: 5px;
+  .hero .content h1 {
+    font-size: 42px;
+    line-height: 48px;
   }
 
-  .hero .overlaySlider .slide .content p {
-    font-size: 18px;
+  .hero .content button {
+    width: 80%;
+    padding: 12px;
   }
 
-  .hero .overlaySlider .slide .content button {
-    width: 70%;
-    padding: 8px;
-    font-size: 14px;
+  .hero .overlay {
+    backdrop-filter: blur(10px);
   }
 
   .whatWeDo {
@@ -459,20 +447,45 @@
   }
 
   .stats {
-    padding: 50px 0;
-    gap: 20px;
+    padding: 60px 20px;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .stats > div {
+    width: 100%;
+    border-left: none;
+    border-top: 2px solid white;
+    padding: 20px 0 0 0;
+  }
+
+  .stats > div:first-child {
+    border-top: none;
+    padding-top: 0;
   }
 
   .stats h2 {
-    font-size: 30px;
+    font-size: 32px;
   }
 
   .stats .stage {
-    flex-direction: column;
+    margin-top: 30px;
   }
 
   .stats .stage .item {
-    width: 100%;
+    padding: 8px;
+  }
+
+  .stats .stage .item .container {
+    padding: 15px 5px;
+  }
+
+  .stats .stage .item .container p {
+    font-size: 14px;
+  }
+
+  .products {
+    width: 100% !important; /* Overrides inline style */
   }
 
   .aboutUs {
