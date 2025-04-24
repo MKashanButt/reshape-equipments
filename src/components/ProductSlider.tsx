@@ -1,5 +1,5 @@
 "use client";
-
+import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y, Autoplay, Navigation } from "swiper/modules";
 import styles from "@/assets/css/components/ProductSlider.module.css";
@@ -38,10 +38,22 @@ export default function ProductSlider({
   data,
   width,
 }: SliderProps) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 640);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <section
       className={styles.products}
-      style={{ width: window.innerWidth <= 640 ? "100%" : width }}
+      style={{ width: isMobile ? "100%" : width }}
     >
       <h2>{heading}</h2>
       <Swiper
