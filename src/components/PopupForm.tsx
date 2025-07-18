@@ -1,18 +1,60 @@
 "use client";
 
+import { FormEvent } from "react";
+
 type PopupDialogProps = {
   id: string;
   onClose: () => void;
 };
 
 export default function PopupForm({ id, onClose }: PopupDialogProps) {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    const data: Record<string, any> = {};
+
+    formData.forEach((value, key) => {
+      if (key !== "consent") {
+        data[key] = value;
+      }
+    });
+
+    try {
+      const res = await fetch(
+        "https://healthmedneeds.com/api/reshape-medical-equipments",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        }
+      );
+
+      const result = await res.json();
+      console.log(result);
+      console.log("Submitting:", data);
+
+      if (result.success) {
+        alert("Form submitted successfully!");
+        onClose();
+      } else {
+        alert("Something went wrong.");
+      }
+    } catch (err) {
+      console.error("Submission error:", err);
+      alert("Network error occurred.");
+    }
+  };
+
   return (
     <div className="braceDialog" id={id}>
       <div className="content">
         <button className="close" onClick={onClose}>
           X
         </button>
-        <form action="/form.php" method="post" id="contactUs">
+        <form onSubmit={handleSubmit} method="post" id="contactUs">
           <h2>Get Your Desired Product or Sevice</h2>
           <p>
             Enter your information below in this quick profile to check your
@@ -29,36 +71,13 @@ export default function PopupForm({ id, onClose }: PopupDialogProps) {
             </div>
           </div>
           <div className="stage">
-            <div className="field" style={{ alignItems: "baseline" }}>
-              <label htmlFor="name">Gender:</label>
-              <select name="gender" id="gender">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </select>
-            </div>
-            <div className="field" style={{ alignItems: "baseline" }}>
-              <label htmlFor="saddress">Street Address:</label>
-              <textarea name="saddress" id="saddress"></textarea>
-            </div>
-          </div>
-          <div className="stage">
             <div className="field">
-              <label htmlFor="city">City:</label>
-              <input type="text" name="city" id="city" />
+              <label htmlFor="zip_code">Zip:</label>
+              <input type="text" name="zip_code" id="zip_code" />
             </div>
             <div className="field">
-              <label htmlFor="state">State:</label>
-              <input type="text" name="state" id="state" />
-            </div>
-          </div>
-          <div className="stage">
-            <div className="field">
-              <label htmlFor="zip">Zip:</label>
-              <input type="text" name="zip" id="zip" />
-            </div>
-            <div className="field">
-              <label htmlFor="number">Phone no:</label>
-              <input type="text" name="number" id="number" />
+              <label htmlFor="phone">Phone no:</label>
+              <input type="text" name="phone" id="phone" />
             </div>
           </div>
           <div className="stage">
@@ -67,12 +86,8 @@ export default function PopupForm({ id, onClose }: PopupDialogProps) {
               <input type="date" name="dob" id="dob" />
             </div>
             <div className="field">
-              <label htmlFor="bestTimeToContact">Best Time To Contact:</label>
-              <input
-                type="text"
-                name="bestTimeToContact"
-                id="bestTimeToContact"
-              />
+              <label htmlFor="message">Message:</label>
+              <textarea name="message" id="message"></textarea>
             </div>
           </div>
           <div
@@ -82,7 +97,7 @@ export default function PopupForm({ id, onClose }: PopupDialogProps) {
             <input type="checkbox" name="consent" id="consent" />
             <p>
               By tapping the &quot;Submit&quot; button, I expressly endorse
-              Reshape Equipments to call me or send me recorded messages or
+              Squad Medical Supply to call me or send me recorded messages or
               messages about their Supplies, or other Clinical things using
               electronic advancement to my telephone/cell number I entered
               already. I understand that I am not supposed to give my consent as
